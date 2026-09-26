@@ -15,10 +15,10 @@ Built as part of a structured re-skilling plan
 
 ## Setup
 
-\`\`\`powershell
+```powershell
 uv sync
 docker compose up
-\`\`\`
+```
 
 ## Notes
 
