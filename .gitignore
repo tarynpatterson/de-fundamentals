@@ -216,3 +216,19 @@ __marimo__/
 
 # Streamlit
 .streamlit/secrets.toml
+
+# Secrets
+.env
+.env.*
+
+# DuckDB local files
+*.duckdb
+*.duckdb.wal
+
+# Docker
+docker-compose.override.yml
+
+# OS/editor cruft
+.DS_Store
+.vscode/
+.idea/
