@@ -224,6 +224,7 @@ __marimo__/
 # DuckDB local files
 *.duckdb
 *.duckdb.wal
+*.parquet
 
 # Docker
 docker-compose.override.yml
