@@ -1,36 +1,13 @@
 /*
---------------------------------------------------------------------------
-Given a table of tweet data over a specified time period, calculate the 3-day 
-rolling average of tweets for each user. Output the user ID, tweet date, and 
-rolling averages rounded to 2 decimal places.
-
-tweets Table:
-Column Name	    Type
-user_id	    integer
-tweet_date	timestamp
-tweet_count	integer
-
-tweets Example Input:
-user_id	tweet_date	        tweet_count
-111	    06/01/2022 00:00:00	2
-111	    06/02/2022 00:00:00	1
-111	    06/03/2022 00:00:00	3
-111	    06/04/2022 00:00:00	4
-111	    06/05/2022 00:00:00	5
-
-Example Output:
-user_id	tweet_date	        rolling_avg_3d
-111	    06/01/2022 00:00:00	2.00
-111	    06/02/2022 00:00:00	1.50
-111	    06/03/2022 00:00:00	2.00
-111	    06/04/2022 00:00:00	2.67
-111	    06/05/2022 00:00:00	4.00
-----------------------------------------------------------------------------
+--------------------------------------------------------------------------------
+Show trip's fare vs. the next trip from the same vendor. Use LEAD().
+--------------------------------------------------------------------------------
 */
 
-SELECT 
-    user_id
-    , tweet_date 
-    , ROUND(AVG(tweet_count) OVER (PARTITION BY user_id ORDER BY tweet_date
-        ROWS BETWEEN 2 PRECEDING AND CURRENT ROW), 2) AS rolling_avg_3d
-FROM tweets
+SELECT
+	VendorID
+	, tpep_pickup_datetime
+	, total_amount
+	, LEAD(total_amount) OVER (PARTITION BY VendorID ORDER BY tpep_pickup_datetime) AS next_total_amount
+FROM taxi.main.trips
+ORDER BY VendorID, tpep_pickup_datetime
