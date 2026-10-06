@@ -6,8 +6,13 @@ readme = "README.md"
 authors = [
     { name = "TarynPatterson", email = "tarynleeshaep@gmail.com" }
 ]
-requires-python = ">=3.10"
-dependencies = []
+requires-python = ">=3.11"
+dependencies = [
+    "duckdb>=1.5.6",
+]
+
+[project.scripts]
+dekit = "dekit.cli:main"
 
 [build-system]
 requires = ["uv_build>=0.12.19,<0.13.0"]
